@@ -1,0 +1,66 @@
+nav{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 64px;
+    border-bottom: 1px solid #dadcda;
+    padding: 8px;
+    color: #5f6368;
+}
+
+nav .logo-area{
+    display: flex;
+    align-items: center;
+}
+
+nav .logo-area .logo-text{
+    font-size: 1.2rem;
+}
+
+nav .search-area{
+    background-color: #f1f3f4;
+    border: none;
+    width: 692px;
+    height: 48px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+}
+
+.search-area input{
+    border: none;
+    background-color: #f1f3f4;
+    width: 100%;
+    height: 95%;
+    font-size: 1rem;
+    margin-left: 10px;
+}
+.search-area span{
+    margin-left: 10px;
+}
+
+input:focus{
+    outline: none;
+}
+
+.settings-area{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.profile-actions-area{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.profile-actions-area .tooltip{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.profile-actions-area #logout{
+    cursor: pointer;
+}
