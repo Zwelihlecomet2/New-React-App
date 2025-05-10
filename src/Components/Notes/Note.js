@@ -1,11 +1,14 @@
 import "./Note.css"
 
-let Note = () =>{
+let Note = (props) =>{
+    const {id, title, text } = props;
+
     return(
             <div className="note">
             <span className="material-symbols-outlined check-circle">check_circle</span>
-            <div className="title">Note One Title</div>
-            <div className="text">Note One Text</div>
+            <div className="title">{id}</div>
+            <div className="title">{title}</div>
+            <div className="text">{text}</div>
             <div className="note-footer">
                 <div className="tooltip">
                     <span className="material-symbols-outlined hover small-icons">add_alert</span>

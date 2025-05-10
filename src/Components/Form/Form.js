@@ -1,10 +1,14 @@
 import "./Form.css"
 
 let Form = () =>{
+    const inactiveFormClickedOn = (event) =>{
+        alert("Inactive Form Has Been Clicked On");
+        console.log(event.target);
+    }
     return(
         <>
         <div className="form-container inactive-form">
-        <form action="">
+        <form onClick={inactiveFormClickedOn} action="">
             <input type="text" placeholder="Take a note... " className="note-text" />
             <div className="form-actions">
                 <div className="tooltip">

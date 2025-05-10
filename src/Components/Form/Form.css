@@ -42,9 +42,9 @@ form .form-actions{
     display: flex;
 }
 
-.active-form{
+/* .active-form{
     display: none;
-}
+} */
 
 .form{
     display: flex;
