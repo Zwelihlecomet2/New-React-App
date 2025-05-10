@@ -5,6 +5,11 @@ let Form = () =>{
         alert("Inactive Form Has Been Clicked On");
         console.log(event.target);
     }
+
+    const closeForm = (event) =>{
+        event.preventDefault();
+    }
+
     return(
         <>
         <div className="form-container inactive-form">
@@ -25,7 +30,8 @@ let Form = () =>{
                 </div>
             </div>
         </form>
-    </div>
+    </div> 
+    
 
     <div className="form-container active-form">
         <form className="form" id="form">
@@ -66,7 +72,7 @@ let Form = () =>{
                         <span className="tooltip-text">Redo</span>
                     </div>
                 </div>
-                <button className="close-btn">Close</button>
+                <button onClick={closeForm} className="close-btn">Close</button>
             </div>
         </form>
     </div>
