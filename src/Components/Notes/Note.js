@@ -1,14 +1,23 @@
+import React, { useState } from "react";
 import "./Note.css"
 
 let Note = (props) =>{
-    const {id, title, text } = props;
+    let { id, title, text } = props;
+
+    const [inputTitle, setTitle] = useState(title);
+    const [inputText, setText] = useState(text);
+
+    const noteHandler = (event) =>{
+        setTitle("Changed Title");
+        setText("Changed Text");
+    }
 
     return(
-            <div className="note">
+            <div className="note" onClick={noteHandler}>
             <span className="material-symbols-outlined check-circle">check_circle</span>
             <div className="title">{id}</div>
-            <div className="title">{title}</div>
-            <div className="text">{text}</div>
+            <div className="title">{inputTitle}</div>
+            <div className="text">{inputText}</div>
             <div className="note-footer">
                 <div className="tooltip">
                     <span className="material-symbols-outlined hover small-icons">add_alert</span>

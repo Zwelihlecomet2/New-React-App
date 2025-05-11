@@ -1,81 +1,92 @@
+import React, { useState } from "react";
 import "./Form.css"
 
 let Form = () =>{
-    const inactiveFormClickedOn = (event) =>{
-        alert("Inactive Form Has Been Clicked On");
-        console.log(event.target);
+    const [title, setTitle] = useState("");
+    const [text, setText] = useState("");
+
+    const textChangeHandler = (event) =>{
+        setText(event.target.value);
     }
 
-    const closeForm = (event) =>{
+    const titleChangeHandler = (event) =>{
+        setTitle(event.target.value) ;
+    }
+
+    const closeBtn = (event) =>{
         event.preventDefault();
+        setTitle("");
+        setText("");
     }
 
     return(
         <>
-        <div className="form-container inactive-form">
-        <form onClick={inactiveFormClickedOn} action="">
-            <input type="text" placeholder="Take a note... " className="note-text" />
-            <div className="form-actions">
-                <div className="tooltip">
-                    <span className="material-symbols-outlined hover">check_box</span>
-                    <span className="tooltip-text">New list</span>
+        <h1>Title: {title}</h1>
+        <h2>Text: {text}</h2>
+        {/* <div className="form-container inactive-form">
+            <form action="">
+                <input type="text" placeholder="Take a note... " className="note-text" />
+                <div className="form-actions">
+                    <div className="tooltip">
+                        <span className="material-symbols-outlined hover">check_box</span>
+                        <span className="tooltip-text">New list</span>
+                    </div>
+                    <div className="tooltip">
+                        <span className="material-symbols-outlined hover">brush</span>
+                        <span className="tooltip-text">New note with drawing</span>
+                    </div>
+                    <div className="tooltip">
+                        <span className="material-symbols-outlined hover">image</span>
+                        <span className="tooltip-text">New note with image</span>
+                    </div>
                 </div>
-                <div className="tooltip">
-                    <span className="material-symbols-outlined hover">brush</span>
-                    <span className="tooltip-text">New note with drawing</span>
-                </div>
-                <div className="tooltip">
-                    <span className="material-symbols-outlined hover">image</span>
-                    <span className="tooltip-text">New note with image</span>
-                </div>
-            </div>
-        </form>
-    </div> 
+            </form>
+        </div>  */}
     
 
-    <div className="form-container active-form">
-        <form className="form" id="form">
-            <input type="text" placeholder="title" id="note-title" className="note-title" />
-            <input type="text" placeholder="Take a note... " id="note-text" className="note-text" />
-            <div className="form-actions">
-                <div className="icons">
-                    <div className="tooltip">
-                        <span className="material-symbols-outlined hover small-icons">add_alert</span>
-                        <span className="tooltip-text">Remind me</span>
+        <div className="form-container active-form">
+            <form className="form" id="form">
+                <input type="text" placeholder="title" id="note-title" className="note-title" onChange={titleChangeHandler}/>
+                <input type="text" placeholder="Take a note... " id="note-text" className="note-text" onChange={textChangeHandler}/>
+                <div className="form-actions">
+                    <div className="icons">
+                        <div className="tooltip">
+                            <span className="material-symbols-outlined hover small-icons">add_alert</span>
+                            <span className="tooltip-text">Remind me</span>
+                        </div>
+                        <div className="tooltip">
+                            <span className="material-symbols-outlined hover small-icons">person_add</span>
+                            <span className="tooltip-text">Collaborator</span>
+                        </div>
+                        <div className="tooltip">
+                            <span className="material-symbols-outlined hover small-icons">palette</span>
+                            <span className="tooltip-text">Change color</span>
+                        </div>
+                        <div className="tooltip">
+                            <span className="material-symbols-outlined hover small-icons">image</span>
+                            <span className="tooltip-text">Image</span>
+                        </div>
+                        <div className="tooltip">
+                            <span className="material-symbols-outlined hover small-icons">archive</span>
+                            <span className="tooltip-text">Archive</span>
+                        </div>
+                        <div className="tooltip">
+                            <span className="material-symbols-outlined hover small-icons">more_vert</span>
+                            <span className="tooltip-text">More</span>
+                        </div>
+                        <div className="tooltip">
+                            <span className="material-symbols-outlined hover small-icons">undo</span>
+                            <span className="tooltip-text">Undo</span>
+                        </div>
+                        <div className="tooltip">
+                            <span className="material-symbols-outlined hover small-icons">redo</span>
+                            <span className="tooltip-text">Redo</span>
+                        </div>
                     </div>
-                    <div className="tooltip">
-                        <span className="material-symbols-outlined hover small-icons">person_add</span>
-                        <span className="tooltip-text">Collaborator</span>
-                    </div>
-                    <div className="tooltip">
-                        <span className="material-symbols-outlined hover small-icons">palette</span>
-                        <span className="tooltip-text">Change color</span>
-                    </div>
-                    <div className="tooltip">
-                        <span className="material-symbols-outlined hover small-icons">image</span>
-                        <span className="tooltip-text">Image</span>
-                    </div>
-                    <div className="tooltip">
-                        <span className="material-symbols-outlined hover small-icons">archive</span>
-                        <span className="tooltip-text">Archive</span>
-                    </div>
-                    <div className="tooltip">
-                        <span className="material-symbols-outlined hover small-icons">more_vert</span>
-                        <span className="tooltip-text">More</span>
-                    </div>
-                    <div className="tooltip">
-                        <span className="material-symbols-outlined hover small-icons">undo</span>
-                        <span className="tooltip-text">Undo</span>
-                    </div>
-                    <div className="tooltip">
-                        <span className="material-symbols-outlined hover small-icons">redo</span>
-                        <span className="tooltip-text">Redo</span>
-                    </div>
+                    <button className="close-btn" onClick={closeBtn}>Close</button>
                 </div>
-                <button onClick={closeForm} className="close-btn">Close</button>
-            </div>
-        </form>
-    </div>
+            </form>
+        </div>
     </>
     )
 }

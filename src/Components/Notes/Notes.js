@@ -2,6 +2,7 @@ import Note from "./Note";
 import "./Notes.css"
 
 let Notes = (props) =>{
+
     const { notes } = props;
     const title1 = notes[0].title;
     const text1 = notes[0].text;
