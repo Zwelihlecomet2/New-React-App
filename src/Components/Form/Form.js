@@ -2,28 +2,25 @@ import React, { useState } from "react";
 import "./Form.css"
 
 let Form = () =>{
-    const [title, setTitle] = useState("");
-    const [text, setText] = useState("");
+    const [inputTitle, setInputTitle] = useState("");
+    const [inputText, setInputText] = useState("");
 
-    const textChangeHandler = (event) =>{
-        setText(event.target.value);
+    const noteTitleChangeHanler = (event) =>{
+        setInputTitle(event.target.value);
     }
 
-    const titleChangeHandler = (event) =>{
-        setTitle(event.target.value) ;
+    const noteTextChangeHanler = (event) =>{
+        setInputText(event.target.value);
     }
 
-    const closeBtn = (event) =>{
+    const submitFormHandler = (event) =>{
         event.preventDefault();
-        setTitle("");
-        setText("");
+        setInputTitle("");
+        setInputText("");
     }
-
     return(
         <>
-        <h1>Title: {title}</h1>
-        <h2>Text: {text}</h2>
-        {/* <div className="form-container inactive-form">
+        <div className="form-container inactive-form">
             <form action="">
                 <input type="text" placeholder="Take a note... " className="note-text" />
                 <div className="form-actions">
@@ -41,13 +38,13 @@ let Form = () =>{
                     </div>
                 </div>
             </form>
-        </div>  */}
+        </div> 
     
 
         <div className="form-container active-form">
-            <form className="form" id="form">
-                <input type="text" placeholder="title" id="note-title" className="note-title" onChange={titleChangeHandler}/>
-                <input type="text" placeholder="Take a note... " id="note-text" className="note-text" onChange={textChangeHandler}/>
+            <form onSubmit={submitFormHandler} className="form" id="form">
+                <input type="text" value={inputTitle} placeholder="title" id="note-title" className="note-title" onChange={noteTitleChangeHanler}/>
+                <input type="text" value={inputText} placeholder="Take a note... " id="note-text" className="note-text" onChange={noteTextChangeHanler}/>
                 <div className="form-actions">
                     <div className="icons">
                         <div className="tooltip">
@@ -83,7 +80,7 @@ let Form = () =>{
                             <span className="tooltip-text">Redo</span>
                         </div>
                     </div>
-                    <button className="close-btn" onClick={closeBtn}>Close</button>
+                    <button className="close-btn">Close</button>
                 </div>
             </form>
         </div>
