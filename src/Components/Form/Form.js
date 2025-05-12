@@ -2,22 +2,33 @@ import React, { useState } from "react";
 import "./Form.css"
 
 let Form = () =>{
-    const [inputTitle, setInputTitle] = useState("");
-    const [inputText, setInputText] = useState("");
+    const [userInput, setUserInput] = useState({
+        title: "",
+        text: "" 
+    });
 
     const noteTitleChangeHanler = (event) =>{
-        setInputTitle(event.target.value);
-    }
+        setUserInput({
+            ...userInput,
+            title: event.target.value
+        });
+    };
 
     const noteTextChangeHanler = (event) =>{
-        setInputText(event.target.value);
+        setUserInput({
+            ...userInput,
+            text: event.target.value
+        });
     }
 
     const submitFormHandler = (event) =>{
         event.preventDefault();
-        setInputTitle("");
-        setInputText("");
+        setUserInput({
+            title: "",
+            text: ""
+        });
     }
+
     return(
         <>
         <div className="form-container inactive-form">
@@ -43,8 +54,8 @@ let Form = () =>{
 
         <div className="form-container active-form">
             <form onSubmit={submitFormHandler} className="form" id="form">
-                <input type="text" value={inputTitle} placeholder="title" id="note-title" className="note-title" onChange={noteTitleChangeHanler}/>
-                <input type="text" value={inputText} placeholder="Take a note... " id="note-text" className="note-text" onChange={noteTextChangeHanler}/>
+                <input type="text" value={userInput.title} placeholder="title" id="note-title" className="note-title" onChange={noteTitleChangeHanler}/>
+                <input type="text" value={userInput.text} placeholder="Take a note... " id="note-text" className="note-text" onChange={noteTextChangeHanler}/>
                 <div className="form-actions">
                     <div className="icons">
                         <div className="tooltip">
