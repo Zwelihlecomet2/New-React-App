@@ -1,7 +1,9 @@
 import React, { useState } from "react";
 import "./Form.css"
 
-let Form = () =>{
+let Form = (props) =>{
+    const { addNote } = props;
+    
     const [userInput, setUserInput] = useState({
         title: "",
         text: "" 
@@ -23,6 +25,16 @@ let Form = () =>{
 
     const submitFormHandler = (event) =>{
         event.preventDefault();
+        const note = {
+            id: "ABC123",
+            title: userInput.title,
+            text: userInput.text
+        }
+        
+        if(!(!note.title) && !(!note.text)){
+            addNote(note);
+        }
+
         setUserInput({
             title: "",
             text: ""

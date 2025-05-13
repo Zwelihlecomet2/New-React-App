@@ -6,7 +6,7 @@ import Modal from "./Components/Modal/Modal";
 
 
 function App() {
-  const notes = [
+  let notes = [
     {
       id: "123",
       title: "My Test Title",
@@ -23,12 +23,17 @@ function App() {
       text: "My Test Text3"
     },
   ]
-    
+
+  const addNote = (note) =>{
+    notes.push(note);
+    console.log(notes);
+  }
+
   return (
     <>
       <Navbar />
       <Sidebar />
-      <Form />
+      <Form addNote={addNote}/>
       <Notes notes={notes}/>
       <Modal />
     </>
