@@ -1,31 +1,19 @@
+import React, { useState } from "react";
 import Navbar from "./Components/Navbar/Navbar";
 import Sidebar from "./Components/Sidebar/Sidebar";
 import Form from "./Components/Form/Form";
 import Notes from "./Components/Notes/Notes";
 import Modal from "./Components/Modal/Modal";
 
+const NOTES = [];
 
 function App() {
-  let notes = [
-    {
-      id: "123",
-      title: "My Test Title",
-      text: "My Test Text"
-    },
-    {
-      id: "124",
-      title: "My Test Title2",
-      text: "My Test Text2"
-    },
-    {
-      id: "125",
-      title: "My Test Title3",
-      text: "My Test Text3"
-    },
-  ]
+  const [notes, setNotes] = useState(NOTES);
 
   const addNote = (note) =>{
-    notes.push(note);
+    setNotes((prevNotes) =>{
+      return [...notes, note];
+    })
     console.log(notes);
   }
 

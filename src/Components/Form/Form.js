@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, {  useState } from "react";
 import "./Form.css"
 
 let Form = (props) =>{
@@ -26,7 +26,7 @@ let Form = (props) =>{
     const submitFormHandler = (event) =>{
         event.preventDefault();
         const note = {
-            id: "ABC123",
+            id: "",
             title: userInput.title,
             text: userInput.text
         }
@@ -36,6 +36,7 @@ let Form = (props) =>{
         }
 
         setUserInput({
+            id: "",
             title: "",
             text: ""
         });
