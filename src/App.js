@@ -12,9 +12,21 @@ function App() {
 
   const addNote = (note) =>{
     setNotes((prevNotes) =>{
-      return [...notes, note];
+      return [...prevNotes, note];
     })
-    console.log(notes);
+    // console.log(notes);
+  }
+
+  const deleteNote = (id) =>{
+    setNotes((prevNotes) =>{
+      return prevNotes.filter((note) =>{
+        return note.id !== id;
+      });
+    });
+
+    // console.log(notes.filter((note) =>{
+    //   return note.id !== id;
+    // }));
   }
 
   return (
@@ -22,7 +34,7 @@ function App() {
       <Navbar />
       <Sidebar />
       <Form addNote={addNote}/>
-      <Notes notes={notes}/>
+      <Notes notes={notes} deleteNote={deleteNote}/>
       <Modal />
     </>
   );

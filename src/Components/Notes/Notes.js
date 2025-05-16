@@ -3,14 +3,14 @@ import "./Notes.css"
 
 let Notes = (props) =>{
 
-    const { notes } = props;
+    const { notes, deleteNote } = props;
 
 
     return(
         <div className="notes">
             {
                 notes.length === 0 ? <p>No Notes Yet</p> : notes.map((note, index) =>{
-                    return <Note key={index} id={note.id} title={note.title} text={note.text}/>
+                    return <Note key={index} id={note.id} title={note.title} text={note.text} deleteNote={deleteNote}/>
                 })
             }
         </div>

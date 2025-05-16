@@ -27,13 +27,8 @@
     margin-top: 15px;
     padding: 0;
     justify-content: center;
-    visibility: visible
+    visibility: hidden;
 }
-
-.visible-footer{
-    visibility: visible;
-}
-
 
 .note-footer .material-symbols-outlined{
     color: #5f6368;

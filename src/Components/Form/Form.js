@@ -29,7 +29,7 @@ let Form = (props) =>{
     const submitFormHandler = (event) =>{
         event.preventDefault();
         const note = {
-            id: "",
+            id: Math.floor(Math.random() * 11),
             title: userInput.title,
             text: userInput.text
         }
