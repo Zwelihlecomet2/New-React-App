@@ -1,3 +1,4 @@
+import { uid } from "uid";
 import React, {  useState } from "react";
 import "./Form.css"
 
@@ -29,7 +30,7 @@ let Form = (props) =>{
     const submitFormHandler = (event) =>{
         event.preventDefault();
         const note = {
-            id: Math.floor(Math.random() * 11),
+            id: uid(),
             title: userInput.title,
             text: userInput.text
         }

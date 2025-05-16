@@ -28,6 +28,7 @@ let Note = (props) =>{
                         <span className="material-symbols-outlined check-circle">check_circle</span>
                     )
                 }
+            <div className="title">{id}</div>
             <div className="title">{inputTitle}</div>
             <div className="text">{inputText}</div>
             <div className="note-footer" style={{visibility: hover ? "visible" : "hidden"}}>
