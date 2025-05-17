@@ -1,13 +1,42 @@
+import React, { useState } from "react";
 import "./Modal.css"
 
-let Modal = () =>{
+let Modal = (props) =>{
+    const { isModalOpen, setIsModalOpen, selectedNote, setSelectedNote, toggleModal } = props;
+
+    // const [initialNote, setInitialNote] = useState(selectedNote); 
+
+    const modalSubmit = (event) =>{
+        event.preventDefault();
+        setIsModalOpen(false);
+        // console.log(event.target);
+        console.log(selectedNote);
+    }
+
+    const closeModalOutside = (event) =>{
+        const isOutsideModalClickedOn = Boolean(event.target.children[0]);
+        // console.log(isOutsideModalClickedOn);
+
+        isOutsideModalClickedOn ? toggleModal() : console.log("");
+        console.log(selectedNote);
+    }
+
+    const handleEdit = (event) =>{
+        const { name, value } = event.target;
+
+        setSelectedNote((prevData) => ({
+            ...prevData,
+            [name]: value,
+          }));
+    }
+
     return(
-            <div className="modal">
+        <div className={`modal ${isModalOpen ? "open-modal" : ""}`} onClick={closeModalOutside}>
             <div className="modal-content">
                 <div className="form-container">
                     <form className="form" id="modal-form">
-                        <input type="text" id="modal-Title" className="note-title" placeholder="title" />
-                        <input type="text" id="modal-Text" placeholder="Take a note... " className="note-text" />
+                        <input name="title" type="text" id="modal-Title" className="note-title" placeholder="title" value={selectedNote.title} onChange={handleEdit}/>
+                        <input name="text" type="text" id="modal-Text" placeholder="Take a note... " className="note-text" value={selectedNote.text} onChange={handleEdit}/>
                         <div className="form-actions">
                             <div className="icons">
                                 <div className="tooltip">
@@ -43,7 +72,7 @@ let Modal = () =>{
                                     <span className="tooltip-text">Redo</span>
                                 </div>
                             </div>
-                            <button id="modal-close-btn" className="close-btn">Close</button>
+                            <button id="modal-close-btn" className="close-btn" onClick={modalSubmit}>Close</button>
                         </div>
                     </form>
                 </div>

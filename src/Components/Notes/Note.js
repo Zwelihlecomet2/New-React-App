@@ -2,12 +2,21 @@ import React, { useState } from "react";
 import "./Note.css"
 
 let Note = (props) =>{
-    let { id, title, text, deleteNote } = props;
+    let { id, title, text, deleteNote, setIsModalOpen, selectedNote, setSelectedNote } = props;
 
     const [inputTitle, setTitle] = useState(title);
     const [inputText, setText] = useState(text);
 
     const [hover, setHover] = useState(false);
+
+    const handleNoteClick = (event) =>{
+        setIsModalOpen(true);
+        setSelectedNote({
+            id: id,
+            title: title,
+            text: text
+        });
+    }
 
     const handleDeleteNote = (event) =>{
         deleteNote(id);
@@ -22,7 +31,7 @@ let Note = (props) =>{
     }
 
     return(
-            <div className="note" onMouseOver={handleMouseOver} onMouseOut={handleMouseOut}>
+            <div className="note" onMouseOver={handleMouseOver} onMouseOut={handleMouseOut} onClick={handleNoteClick}>
                 {
                     hover && (
                         <span className="material-symbols-outlined check-circle">check_circle</span>

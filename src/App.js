@@ -9,6 +9,8 @@ const NOTES = [];
 
 function App() {
   const [notes, setNotes] = useState(NOTES);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [selectedNote, setSelectedNote] = useState({});
 
   const addNote = (note) =>{
     setNotes((prevNotes) =>{
@@ -29,13 +31,24 @@ function App() {
     // }));
   }
 
+  const toggleModal = (event) =>{
+    setIsModalOpen((prevState) =>{
+      return !prevState;
+    })
+  }
+
   return (
     <>
       <Navbar />
       <Sidebar />
-      <Form addNote={addNote}/>
-      <Notes notes={notes} deleteNote={deleteNote}/>
-      <Modal />
+      <Form addNote={addNote} />
+      <Notes notes={notes} deleteNote={deleteNote} setIsModalOpen={setIsModalOpen} selectedNote={selectedNote} setSelectedNote={setSelectedNote} />
+
+    {
+      isModalOpen && (
+        <Modal isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen} selectedNote={selectedNote} toggleModal={toggleModal} setSelectedNote={setSelectedNote} />
+      )
+    }
     </>
   );
 }
