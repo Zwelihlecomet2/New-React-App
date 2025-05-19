@@ -9,7 +9,6 @@ let Modal = (props) =>{
     const modalSubmit = (event) =>{
         event.preventDefault();
         setIsModalOpen(false);
-        // console.log(event.target);
         console.log(selectedNote);
     }
 
@@ -18,7 +17,6 @@ let Modal = (props) =>{
         // console.log(isOutsideModalClickedOn);
 
         isOutsideModalClickedOn ? toggleModal() : console.log("");
-        console.log(selectedNote);
     }
 
     const handleEdit = (event) =>{

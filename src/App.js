@@ -7,10 +7,11 @@ import Modal from "./Components/Modal/Modal";
 
 const NOTES = [];
 
-function App() {
+function App(props) {
   const [notes, setNotes] = useState(NOTES);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedNote, setSelectedNote] = useState({});
+  const [isBurgerMenuClicked, setBurgerMenu] = useState(false);
 
   const addNote = (note) =>{
     setNotes((prevNotes) =>{
@@ -37,10 +38,17 @@ function App() {
     })
   }
 
+
+  const handleSidebar = (event) =>{
+    setBurgerMenu((prevState) =>{
+      return !prevState;
+    })
+  }
+
   return (
     <>
-      <Navbar />
-      <Sidebar />
+      <Navbar handleSidebar={handleSidebar} />
+      <Sidebar isBurgerMenuClicked={isBurgerMenuClicked}/>
       <Form addNote={addNote} />
       <Notes notes={notes} deleteNote={deleteNote} setIsModalOpen={setIsModalOpen} selectedNote={selectedNote} setSelectedNote={setSelectedNote} />
 

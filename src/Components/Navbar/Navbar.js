@@ -1,11 +1,16 @@
 import "./Navbar.css"
 
-let Navbar = () =>{ 
+let Navbar = (props) =>{ 
+    const { handleSidebar } = props;
+
+    const openSidebar = (event) =>{
+        handleSidebar();
+    }
     return(
         <nav>
             <div className="logo-area">
              <div className="tooltip">
-                    <span id="menu" className="material-symbols-outlined hover">menu</span>
+                    <span id="menu" className="material-symbols-outlined hover" onClick={openSidebar}>menu</span>
                     <span className="tooltip-text">Main Menu</span>
                 </div>
                    <img className="gb_Od gb_Pd" src="https://www.gstatic.com/images/

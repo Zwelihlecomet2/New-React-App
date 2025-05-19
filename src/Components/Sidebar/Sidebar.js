@@ -1,8 +1,22 @@
+import React, { useState } from "react";
 import "./Sidebar.css"
 
-let Sidebar = () =>{
+let Sidebar = (props) =>{
+    const { isBurgerMenuClicked } = props;
+
+    const [isSideBar, setIsSideBar] = useState(false);
+
+    const handleMouseOverSidebar = (event) =>{
+        setIsSideBar(true);
+    }
+
+    const handleMouseOutSidebar = (event) =>{
+        setIsSideBar(false);
+    }
+
+
     return(
-        <div className="side-bar">
+        <div className="side-bar" style={{width: (isSideBar || isBurgerMenuClicked) ? "250px" : "66px"}} onMouseOver={handleMouseOverSidebar} onMouseOut={handleMouseOutSidebar}>
             <div className="sidebar-items active-item">
                 <span className="material-symbols-outlined hover active">lightbulb</span>  
                 <span className="sidebar-text">Notes</span>          

@@ -2,10 +2,10 @@ import React, { useState } from "react";
 import "./Note.css"
 
 let Note = (props) =>{
-    let { id, title, text, deleteNote, setIsModalOpen, selectedNote, setSelectedNote } = props;
+    let { id, title, text, deleteNote, setIsModalOpen, setSelectedNote } = props;
 
-    const [inputTitle, setTitle] = useState(title);
-    const [inputText, setText] = useState(text);
+    const [inputTitle] = useState(title);
+    const [inputText] = useState(text);
 
     const [hover, setHover] = useState(false);
 
@@ -13,8 +13,8 @@ let Note = (props) =>{
         setIsModalOpen(true);
         setSelectedNote({
             id: id,
-            title: title,
-            text: text
+            title,
+            text
         });
     }
 
@@ -31,15 +31,16 @@ let Note = (props) =>{
     }
 
     return(
-            <div className="note" onMouseOver={handleMouseOver} onMouseOut={handleMouseOut} onClick={handleNoteClick}>
-                {
-                    hover && (
-                        <span className="material-symbols-outlined check-circle">check_circle</span>
-                    )
-                }
-            <div className="title">{id}</div>
-            <div className="title">{inputTitle}</div>
-            <div className="text">{inputText}</div>
+        <div className="note" onMouseOver={handleMouseOver} onMouseOut={handleMouseOut}>
+            <div className="inner-note" onClick={handleNoteClick}>
+                    {
+                        hover && (
+                            <span className="material-symbols-outlined check-circle">check_circle</span>
+                        )
+                    }
+                <div className="title">{inputTitle}</div>
+                <div className="text">{inputText}</div>
+            </div>
             <div className="note-footer" style={{visibility: hover ? "visible" : "hidden"}}>
                 <div className="tooltip">
                     <span className="material-symbols-outlined hover small-icons">add_alert</span>

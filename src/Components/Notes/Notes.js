@@ -3,13 +3,13 @@ import "./Notes.css"
 
 let Notes = (props) =>{
 
-    const { notes, deleteNote, setIsModalOpen, selectedNote, setSelectedNote } = props;
+    const { notes, deleteNote, setIsModalOpen, setSelectedNote } = props;
 
     return(
         <div className="notes">
             {
                 notes.length === 0 ? <p>No Notes Yet</p> : notes.map((note, index) =>{
-                    return <Note key={index} id={note.id} title={note.title} text={note.text} deleteNote={deleteNote} setIsModalOpen={setIsModalOpen} selectedNote={selectedNote} setSelectedNote={setSelectedNote} />
+                    return <Note key={index} id={note.id} title={note.title} text={note.text} deleteNote={deleteNote} setIsModalOpen={setIsModalOpen} setSelectedNote={setSelectedNote} />
                 })
             }
         </div>
