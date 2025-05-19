@@ -3,8 +3,6 @@ import "./Modal.css"
 let Modal = (props) =>{
     const { isModalOpen, setIsModalOpen, selectedNote, setSelectedNote, toggleModal } = props;
 
-    // const [initialNote, setInitialNote] = useState(selectedNote); 
-
     const modalSubmit = (event) =>{
         event.preventDefault();
         setIsModalOpen(false);
@@ -13,8 +11,6 @@ let Modal = (props) =>{
 
     const closeModalOutside = (event) =>{
         const isOutsideModalClickedOn = Boolean(event.target.children[0]);
-        // console.log(isOutsideModalClickedOn);
-
         isOutsideModalClickedOn ? toggleModal() : console.log("");
     }
 
